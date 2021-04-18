@@ -3,7 +3,6 @@ import "./Login.css";
 import { Button } from "@material-ui/core";
 import { auth, provider } from "../../firebase";
 import { actionTypes } from "../../reducer";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 const Login = () => {

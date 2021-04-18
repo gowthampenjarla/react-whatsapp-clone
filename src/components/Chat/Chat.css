@@ -120,6 +120,7 @@ input:disabled {
   border-radius: 30px;
   padding: 10px;
   border: none;
+  margin: 10px 0;
 }
 
 .chat__footer form input:focus {
@@ -128,7 +129,7 @@ input:disabled {
 }
 
 .chat__footer form button {
-  display: none;
+  /* display: none; */
 }
 
 .chat__footer .MuiSvgIcon-root {

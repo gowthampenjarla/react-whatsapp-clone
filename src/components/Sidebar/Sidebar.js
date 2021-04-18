@@ -6,10 +6,12 @@ import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import SidebarChat from "../SIdebarChat/SidebarChat";
+import { useSelector } from "react-redux";
 import db from "../../firebase";
 
 const Sidebar = () => {
   const [rooms, setRooms] = useState([]);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     db.collection("rooms").onSnapshot((snapshot) => {
@@ -20,7 +22,7 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='sidebar__header'>
-        <Avatar />
+        <Avatar src={user?.photoURL} />
         <div className='sidebar__headerRight'>
           <IconButton>
             <DonutLargeIcon />
