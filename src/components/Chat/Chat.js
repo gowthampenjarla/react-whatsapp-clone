@@ -34,7 +34,9 @@ const Chat = () => {
         .onSnapshot((snapshot) =>
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
-      scrollToBottom();
+      setTimeout(() => {
+        scrollToBottom();
+      }, 500);
     }
   }, [roomId]);
 
