@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Chat.css";
 import { useParams } from "react-router-dom";
 import { Avatar, IconButton } from "@material-ui/core";
@@ -19,6 +19,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const { roomId } = useParams();
   const user = useSelector((state) => state.user);
+  const messagesEndRef = useRef();
 
   useEffect(() => {
     if (roomId) {
@@ -33,12 +34,17 @@ const Chat = () => {
         .onSnapshot((snapshot) =>
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
+      scrollToBottom();
     }
   }, [roomId]);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -53,6 +59,7 @@ const Chat = () => {
       name: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
+    scrollToBottom();
     setInput("");
   };
 
@@ -95,6 +102,7 @@ const Chat = () => {
             </span>
           </p>
         ))}
+        <div ref={messagesEndRef} />
       </div>
       <div className='chat__footer'>
         <IconButton>
