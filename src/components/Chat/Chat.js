@@ -102,7 +102,7 @@ const Chat = () => {
             </span>
           </p>
         ))}
-        <div ref={messagesEndRef} />
+        <div className='chat__bottom' ref={messagesEndRef} />
       </div>
       <div className='chat__footer'>
         <IconButton>

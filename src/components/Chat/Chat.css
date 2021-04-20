@@ -53,6 +53,9 @@
   margin-left: auto;
   background-color: #dcf8c6;
 }
+.chat__bottom {
+  margin: 30px;
+}
 
 .chat__headerRight {
   display: flex;
